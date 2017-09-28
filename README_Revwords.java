@@ -26,19 +26,30 @@ public class Revwords {
         System.out.println("The New message is:" + obj.transpose(tstphrase));
     }
 //************************************************************************************************************************
-// transpose(String): This method accepts a string and if there is more than one character in the string will return the string 
-// characters in reverse order.  
+// transpose(String): This method accepts a string and if there is more than one character in the string will return the string characters
+// in reverse order.  
 //************************************************************************************************************************
     //Class variable to store reversed string.
     private StringBuffer result = new StringBuffer();
     
     public String transpose(String word){
-        
-	//Initially, the method has a limit constraint set so when the cursor’s index is the first character it will exit the method.
-        
+        //Set limit for first character to exit method.
+	//Initially, the method has a constraint is set so when the cursor’s index is the first character it will exit the method.
+
+        if(word.length() == 1){
+        	  result.append(word.charAt(word.length()-1));
+          
+        	return result.toString();
+        }
+
 	//Next, it recursively calls the transpose() method and appends the characters in reverse order until the last character
 	//which is handled by the first ‘if’ condition.  The string is then returned for screen output.
 
+        else{
+        	result.append(word.charAt(word.length()-1));
+        	transpose(word.substring(0,word.length()-1));
+        	            
+        return result.toString();
         }
     }
     
